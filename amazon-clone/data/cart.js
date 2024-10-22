@@ -4,3 +4,27 @@
 ];*/
 
 export const cart = [];
+
+export function addToCart(productId) {
+  const quantity = Number(
+    document.querySelector(`.js-product-quantity-${productId}`).value
+  );
+  const item = {
+    productId,
+    quantity,
+  };
+
+  let matchingItem;
+
+  cart.forEach((cartItem) => {
+    if (cartItem.productId === item.productId) {
+      matchingItem = cartItem;
+    }
+  });
+
+  if (matchingItem) {
+    matchingItem.quantity = item.quantity;
+  } else {
+    cart.push(item);
+  }
+}
