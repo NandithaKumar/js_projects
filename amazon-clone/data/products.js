@@ -1,3 +1,23 @@
+class Product {
+  id;
+  image;
+  name;
+  rating;
+  price;
+
+  getRating() {
+    return `images/ratings/rating-${this.rating.stars * 10}.png`;
+  }
+
+  constructor(productDetails) {
+    this.id = productDetails.id;
+    this.image = productDetails.image;
+    this.name = productDetails.name;
+    this.rating = productDetails.rating;
+    this.price = productDetails.price;
+  }
+}
+
 export function getProduct(productId) {
   let matchingProduct;
 
@@ -480,4 +500,6 @@ export const products = [
     price: 2400,
     keywords: ['sweaters', 'hoodies', 'apparel', 'mens'],
   },
-];
+].map((productDetails) => {
+  return new Product(productDetails);
+});
